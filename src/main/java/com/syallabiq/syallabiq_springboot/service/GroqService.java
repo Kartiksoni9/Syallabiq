@@ -128,7 +128,7 @@ Constraints:
         String content = root.at("/choices/0/message/content").asText().trim();
 
         // Strip markdown fences if Groq wraps in ```json ... ```
-        content = content.replaceAll("(?s)^```json\\s*", "").replaceAll("(?s)```\\s*$", "").trim();
+        content = content.replaceAll("(?s)```json", "").replaceAll("(?s)```", "").trim();
 
         // Validate it's proper JSON before returning
         mapper.readTree(content); // throws JsonProcessingException if invalid
